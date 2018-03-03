@@ -9,11 +9,7 @@ router.get('/', function(req, res, next) {
   kraken.api('Ticker', {"pair": 'XXBT'}, function(error, data) {
     (async () => {
        await kraken.api('Ticker', { pair : 'XXBTZUSD'}).then(function(response){
-         res.send({
-           price:response.result.XXBTZUSD.h[0],
-           oldPrice:response.result.XXBTZUSD.h[1],
-           variation: (response.result.XXBTZUSD.h[0] - response.result.XXBTZUSD.h[1])*100/response.result.XXBTZUSD.h[1]+'%',
-         });
+         res.send(response);
        })
 })();
 });

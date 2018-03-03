@@ -13,7 +13,7 @@ router.post('/', function(req, res, next) {
     if (!user) {
       res.json({ success: false, message: 'Authentication failed. User not found.' });
     } else if (user) {
-      user.comparePassword(req.body.password, function(err, isMatch) {
+      user.comparePassword(req.body.password, function(err, isMatch) {        
         if (err) throw err;
         if(isMatch == false){
           res.json({success:false,message:"Wrong Password"});

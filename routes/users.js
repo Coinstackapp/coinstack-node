@@ -4,12 +4,10 @@ var User = require('../shemas/users');
 var jwt = require('jsonwebtoken');
 var config = require('../config');
 
-router.post('/', function(req, res, next) {
-  User.findById(req.body.id, function(err, result) {
-    res.json({
-      data:result
-    })
-  })
+router.get('/', function(req, res, next) {
+  User.find({}, function(err, data) {
+    res.json(data);
+  });
 });
 
 module.exports = router;

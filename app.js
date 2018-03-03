@@ -11,7 +11,11 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var register = require('./routes/auth/register');
 var login = require('./routes/auth/login');
-//var ticker = require('./routes/auth/ticker');
+var ticker = require('./routes/ticker');
+var support = require('./routes/support');
+var news = require('./routes/news/news');
+var allNews = require('./routes/news/allNews');
+
 
 mongoose.connect(config.database);
 
@@ -33,7 +37,10 @@ app.use('/', index);
 app.use('/api/users', users);
 app.use('/api/register', register);
 app.use('/api/login', login);
-//app.use('/api/ticker', ticker);
+app.use('/api/ticker', ticker);
+app.use('/api/support', support);
+app.use('/api/news', news);
+app.use('/api/news/all', allNews);
 
 
 // catch 404 and forward to error handler

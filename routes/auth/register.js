@@ -17,12 +17,8 @@ router.post('/', function(req, res, next) {
 
   // save the sample user
   user.save(function(response,err) {
-    if(err){
-      res.send({success:false,error:err})
-    }else{
-      res.send({success:true,res:response});
-    }
-    
+    if (err) throw err;
+    res.send({success:true})
   });
 });
 

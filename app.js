@@ -15,7 +15,7 @@ var ticker = require('./routes/ticker');
 var support = require('./routes/support');
 var news = require('./routes/news/news');
 var allNews = require('./routes/news/allNews');
-
+var charge = require('./routes/stripe/charge');
 
 mongoose.connect(config.database);
 
@@ -41,6 +41,7 @@ app.use('/api/ticker', ticker);
 app.use('/api/support', support);
 app.use('/api/news', news);
 app.use('/api/news/all', allNews);
+app.use('/api/charge', charge);
 
 
 // catch 404 and forward to error handler

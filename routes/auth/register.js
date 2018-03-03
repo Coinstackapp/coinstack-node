@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
 var User = require('../../shemas/users');
+var stripe = require("stripe")(
+  "sk_test_kqAV25JA3AxtfCXoqKUNOXv5"
+);
 
 router.post('/', function(req, res, next) {
 
@@ -16,9 +19,15 @@ router.post('/', function(req, res, next) {
   });
 
   // save the sample user
-  user.save(function(response,err) {
-    if (err) throw err;
-    res.send({success:true})
+  user.save(function(err,response) {
+    if(!err){
+      res.send({
+        success:true,
+        user:response
+      })
+    }else{
+      res.send({success:false,error:err});
+    }
   });
 });
 

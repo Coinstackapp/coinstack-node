@@ -8,14 +8,19 @@ var mongoose = require('mongoose');
 var config = require('./config');
 
 var index = require('./routes/index');
+
 var users = require('./routes/users');
 var register = require('./routes/auth/register');
 var login = require('./routes/auth/login');
-var ticker = require('./routes/ticker');
+
 var support = require('./routes/support');
+
 var news = require('./routes/news/news');
 var allNews = require('./routes/news/allNews');
+
 var charge = require('./routes/stripe/charge');
+
+var price = require('./routes/crypto/price');
 
 mongoose.connect(config.database);
 
@@ -34,15 +39,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+
 app.use('/api/users', users);
 app.use('/api/register', register);
 app.use('/api/login', login);
-app.use('/api/ticker', ticker);
+
 app.use('/api/support', support);
+
 app.use('/api/news', news);
 app.use('/api/news/all', allNews);
+
 app.use('/api/charge', charge);
 
+app.use('/api/price', price);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

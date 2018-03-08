@@ -10,7 +10,8 @@ router.post('/', function(req, res, next) {
     image: req.body.image,
     content: req.body.content,
     featured: req.body.featured,
-    date: moment().format('MMMM Do YYYY')
+    date: moment().format('MMMM Do YYYY'),
+    author: req.body.author
   });
 
   news.save(function(response,err) {

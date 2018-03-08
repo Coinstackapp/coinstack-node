@@ -6,7 +6,8 @@ var newsSchema = new Schema({
   image: String,
   content: String,
   featured: Boolean,
-  date: String
+  date: String,
+  author:String
 });
 
 var News = mongoose.model('News', newsSchema);

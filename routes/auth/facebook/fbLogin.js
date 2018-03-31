@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
               });
           });
         }else{
-            res.send('No Facebook ID')
+            res.send('No Facebook ID');
         }
         
     }

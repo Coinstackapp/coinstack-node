@@ -47,8 +47,8 @@ app.use('/', index);
 app.use('/api/users', users);
 app.use('/api/register', register);
 app.use('/api/login', login);
-app.use('/api/login/facebook', fbLogin);
-app.use('/api/register/facebook', fbRegister);
+app.use('/api/fblogin', fbLogin);
+app.use('/api/fbregister', fbRegister);
 
 
 app.use('/api/support', support);

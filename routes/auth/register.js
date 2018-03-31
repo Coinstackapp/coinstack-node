@@ -15,7 +15,8 @@ router.post('/', function(req, res, next) {
     password: req.body.password,
     token:"null",
     type:"user",
-    admin:false
+    facebookId:req.body.facebook,
+    googleId: req.body.google
   });
 
   // save the sample user

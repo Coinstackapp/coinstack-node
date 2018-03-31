@@ -12,8 +12,6 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var register = require('./routes/auth/register');
 var login = require('./routes/auth/login');
-var fbLogin = require('./routes/auth/facebook/fbLogin');
-var fbRegister = require('./routes/auth/facebook/fbRegister');
 
 var support = require('./routes/support');
 
@@ -47,9 +45,6 @@ app.use('/', index);
 app.use('/api/users', users);
 app.use('/api/register', register);
 app.use('/api/login', login);
-app.use('/api/fblogin', fbLogin);
-app.use('/api/fbregister', fbRegister);
-
 
 app.use('/api/support', support);
 

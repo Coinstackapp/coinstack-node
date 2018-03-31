@@ -14,9 +14,7 @@ router.post('/', function(req, res, next) {
     email: req.body.email,
     password: req.body.password,
     token:"null",
-    type:"user",
-    facebookId:req.body.facebook,
-    googleId: req.body.google
+    type:"user"
   });
 
   // save the sample user

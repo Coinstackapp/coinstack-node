@@ -25,7 +25,7 @@ router.post('/', function(req, res, next) {
         user:response
       })
     }else{
-      res.send({success:false,error:err});
+      res.send({success:false,message:'Error. Please check your fields'});
     }
   });
 });

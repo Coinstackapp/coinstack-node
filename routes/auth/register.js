@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
     email: req.body.email,
     password: req.body.password,
     token:"null",
-    type:"email",
+    type:"user",
     admin:false
   });
 

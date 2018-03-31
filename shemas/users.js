@@ -11,7 +11,9 @@ var userSchema = new Schema({
   created_at: Date,
   updated_at: Date,
   token:"",
-  type:""
+  type:"",
+  facebookId: String,
+  googleId: String
 });
 
 userSchema.pre('save', function(next) {

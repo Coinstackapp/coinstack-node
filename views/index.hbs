@@ -1,10 +1,14 @@
-<html>
-  <body>
-    <form action="/api/charge" method="post">
-      <article>
-        <label>Amount: $5.00</label>
-      </article>
-      <script class="stripe-button" src="//checkout.stripe.com/v2/checkout.js" data-key="pk_test_sSz1vjAZbVo61JiYAqA7wxw7" data-locale="auto" data-description="Sample Charge" data-amount="500"></script>
+<!doctype html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    <title>Stripe example</title>
+</head>
+<body>
+    <form action="/api/charge" method="POST">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_FR1Lf9aiY6gaxl9xQRAW2yzT">
+        </script>
     </form>
-  </body>
+</body>
 </html>

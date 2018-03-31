@@ -12,6 +12,8 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var register = require('./routes/auth/register');
 var login = require('./routes/auth/login');
+var fbLogin = require('./routes/auth/facebook/fbLogin');
+var fbRegister = require('./routes/auth/facebook/fbRegister');
 
 var support = require('./routes/support');
 
@@ -19,8 +21,10 @@ var news = require('./routes/news/news');
 var allNews = require('./routes/news/allNews');
 
 var charge = require('./routes/stripe/charge');
+var customer = require('./routes/stripe/customer');
 
 var price = require('./routes/crypto/price');
+var kraken = require('./routes/crypto/purshase');
 
 mongoose.connect(config.database);
 
@@ -43,6 +47,9 @@ app.use('/', index);
 app.use('/api/users', users);
 app.use('/api/register', register);
 app.use('/api/login', login);
+app.use('/api/login/facebook', fbLogin);
+app.use('/api/register/facebook', fbRegister);
+
 
 app.use('/api/support', support);
 
@@ -50,8 +57,12 @@ app.use('/api/news', news);
 app.use('/api/news/all', allNews);
 
 app.use('/api/charge', charge);
+app.use('/api/customer', customer);
+
 
 app.use('/api/price', price);
+app.use('/api/purshase', kraken);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

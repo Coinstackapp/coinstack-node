@@ -22,7 +22,6 @@ router.post('/', function(req, res, next) {
       customerID:customer.id,
       defaultCard:customer.default_source,
       cards:customer.sources.data,
-      stripeToken:token.id
     });
     User.findOne({email: req.body.email}).then(function(user,err){
     user.stripeId = customer.id;

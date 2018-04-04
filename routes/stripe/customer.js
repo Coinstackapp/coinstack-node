@@ -27,7 +27,6 @@ router.post('/', function(req, res, next) {
     User.findOne({email: req.body.email}).then(function(user,err){
     user.stripeId = customer.id;
     user.defaultCard = customer.default_source;
-
     user.save(function(err) {
       if(err) throw err;
       });

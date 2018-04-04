@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var config = require('../../config');
 var stripe = require("stripe")(config.stripe);
+var User = require('../../shemas/users');
 
 router.post('/', function(req, res, next) {
   stripe.tokens.create({
@@ -12,7 +13,6 @@ router.post('/', function(req, res, next) {
     "cvc":req.body.cvc
   }
 }, function(err, token) {
-
   stripe.customers.create({
     email:req.body.email,
     description:req.body.name,
@@ -23,9 +23,17 @@ router.post('/', function(req, res, next) {
       defaultCard:customer.default_source,
       cards:customer.sources.data,
       stripeToken:token.id
-    })
+    });
+    User.findOne({email: req.body.email}).then(function(user,err){
+    user.stripeId = customer.id;
+    user.defaultCard = customer.default_source;
+
+    user.save(function(err) {
+      if(err) throw err;
+      });
    });
-  });
+});
+});
 });
 
 module.exports = router;

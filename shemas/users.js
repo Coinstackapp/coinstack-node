@@ -10,7 +10,9 @@ var userSchema = new Schema({
   token:"",
   type:"",
   facebookId: String,
-  googleId: String
+  googleId: String,
+  stripeId: String,
+  defaultCard:String
 });
 
 userSchema.pre('save', function(next) {

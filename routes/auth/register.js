@@ -14,7 +14,9 @@ router.post('/', function(req, res, next) {
     email: req.body.email,
     password: req.body.password,
     token:"null",
-    type:"user"
+    type:"user",
+    stripeId:"null",
+    defaultCard:"null"
   });
 
   // save the sample user

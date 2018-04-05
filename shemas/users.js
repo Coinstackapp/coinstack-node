@@ -12,7 +12,8 @@ var userSchema = new Schema({
   facebookId: String,
   googleId: String,
   stripeId: String,
-  defaultCard:String
+  defaultCard:String,
+  rehiveId:String
 });
 
 userSchema.pre('save', function(next) {

@@ -24,6 +24,8 @@ var customer = require('./routes/stripe/customer');
 var price = require('./routes/crypto/price');
 var kraken = require('./routes/crypto/purshase');
 
+var rehive = require('./routes/rehive/user');
+
 mongoose.connect(config.database);
 
 var app = express();
@@ -57,6 +59,8 @@ app.use('/api/customer', customer);
 
 app.use('/api/price', price);
 app.use('/api/purshase', kraken);
+
+app.use('/api/rehive', rehive);
 
 
 // catch 404 and forward to error handler

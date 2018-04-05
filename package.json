@@ -20,7 +20,7 @@
     "mongoose": "^5.0.7",
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
-    "rehive": "^1.7.0",
+    "rehive": "git://github.com/rehive/rehive-javascript.git#master",
     "serve-favicon": "~2.4.5",
     "stripe": "^5.5.0"
   }

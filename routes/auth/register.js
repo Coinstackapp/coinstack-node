@@ -16,7 +16,8 @@ router.post('/', function(req, res, next) {
     token:"null",
     type:"user",
     stripeId:"null",
-    defaultCard:"null"
+    defaultCard:"null",
+    rehiveId:"null"
   });
 
   // save the sample user
@@ -25,7 +26,7 @@ router.post('/', function(req, res, next) {
       res.send({
         success:true,
         user:response
-      })
+      });
     }else{
       res.send({success:false,message:'Error. Please check your fields'});
     }

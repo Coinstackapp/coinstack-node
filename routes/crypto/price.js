@@ -3,17 +3,13 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 var config = require('../../config');
 var app = express();
-var Cryptowatch = require('cryptowatch');
-var cw = new Cryptowatch();
+var axios =  require('axios');
 
 router.get('/', function(req, res, next) {
-    var currency = req.headers['currency'];
-    cw.price(currency, 'usd', 'kraken').then(function(price){
-        cw.summary('currency', 'usd', 'kraken').then(function(summary){
-            res.json({
-                price:price.price,
-                change:summary.price.change.percentage
-            });
+    axios.get('https://api.cryptowat.ch/markets/kraken/btcusd/summary').then(function(response){
+        res.send({
+            price:response.data.result.price.last,
+            change:response.data.result.price.change.percentage
         });
     });
 });

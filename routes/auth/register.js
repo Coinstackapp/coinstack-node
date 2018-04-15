@@ -2,25 +2,25 @@ var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
 var User = require('../../shemas/users');
-var stripe = require("stripe")(
-  "sk_test_kqAV25JA3AxtfCXoqKUNOXv5"
-);
+var Rehive = require('rehive');
+var rehive = new Rehive({apiVersion: 3, apiToken: '9706a798613cc8888800eebf0f6c3478a56fbaa63fe2f8103768fdd63b36ab59'});
 
 router.post('/', function(req, res, next) {
-
-   // create a sample user
-   var user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    token:"null",
-    type:"user",
-    stripeId:"null",
-    defaultCard:"null",
-    rehiveId:"null"
-  });
-
-  // save the sample user
+  rehive.admin.users.create({
+    username: req.body.username,
+    email:req.body.email,
+  }).then(function(rehive){
+    var user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      token:"null",
+      type:"user",
+      stripeId:"null",
+      defaultCard:"null",
+      rehiveId:rehive.identifier
+    });
+    // save the sample user
   user.save(function(err,response) {
     if(!err){
       res.send({
@@ -30,6 +30,7 @@ router.post('/', function(req, res, next) {
     }else{
       res.send({success:false,message:'Error. Please check your fields'});
     }
+  });
   });
 });
 

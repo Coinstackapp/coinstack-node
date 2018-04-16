@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
               user.token = token;
               user.save(function(err) {
                   if (err) throw err;
-                  res.send({success:true,id:user._id,token:token,name:user.name,email:user.email});
+                  res.send({success:true,id:user._id,token:token,name:user.name,email:user.email,rehiveId:user.rehiveId});
                 });
             });
     }

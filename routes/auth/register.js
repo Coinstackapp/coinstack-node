@@ -22,16 +22,25 @@ router.post('/', function(req, res, next) {
     });
     // save the sample user
   user.save(function(err,response) {
-    if(!err){
+    if(err){
+      res.send({
+        success:false,
+        error:err
+      });
+    }else{
       res.send({
         success:true,
         user:response
       });
-    }else{
-      res.send({success:false,message:'Error. Please check your fields'});
     }
   });
+}).catch(function(err){
+  res.send({
+    success:false,
+    error:err,
+    tag:'rehive'
   });
+});
 });
 
 module.exports = router;

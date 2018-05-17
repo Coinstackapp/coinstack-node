@@ -5,10 +5,21 @@ var app = express();
 var KrakenClient = require('kraken-api');
 var kraken = new KrakenClient(config.key, config.secret);
 
-router.get('/', function(req, res, next) {
-  	 kraken.api('Ticker', { pair : 'XXBTZUSD' }).then(function(result){
-      res.send(result);
-    });
+router.post('/', function(req, res, next) {
+  kraken.api('AddOrder', { 'pair': 'XBTCZEUR', 'type': 'buy', 'ordertype': 'market', 'volume':'10.0', 'oflags': 'viqc'}, function(error,data) {
+    if(error) {
+      res.send({
+        success:false,
+        error:error
+      });
+    }
+    else {
+      res.send({
+        success:true,
+        data:data
+      }); 
+    }
+  });
 });
 
 module.exports = router;

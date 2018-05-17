@@ -25,6 +25,7 @@ var price = require('./routes/crypto/price');
 var kraken = require('./routes/crypto/purshase');
 
 var rehive = require('./routes/rehive/user');
+var buy = require('./routes/crypto/purshase');
 
 mongoose.connect(config.database);
 
@@ -61,6 +62,9 @@ app.use('/api/price', price);
 app.use('/api/purshase', kraken);
 
 app.use('/api/rehive', rehive);
+
+app.use('/api/buy', buy);
+
 
 
 // catch 404 and forward to error handler
